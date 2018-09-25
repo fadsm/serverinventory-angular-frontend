@@ -1,0 +1,28 @@
+<div class="container">
+	<br>
+	<br>
+	<br>
+	<h1>Cadastro de Vcenter</h1>
+	<form>
+		<div class="form-group">
+			<label for="name">Nome</label> <input type="text"
+				class="form-control" name="name" [(ngModel)]="vcenter.name"
+				required>
+		</div>
+
+		<button class="btn btn-success" *ngIf="vcenter.id == null" (click)="addVcenter()">Cadastrar</button>
+		<button class="btn btn-success" *ngIf="vcenter.id != null" (click)="updateVcenter()">Atualizar</button>
+	</form>
+
+	<p></p>
+	<table class="table">
+		<tr>
+			<th>Nome</th>
+		</tr>
+		<tr *ngFor="let vcenter of vcenters">
+			<td>{{vcenter.name}} </td>
+			<button class="btn btn-success" (click)="loadVcenter()">Carregar</button>
+		</tr>
+	</table>
+
+</div>

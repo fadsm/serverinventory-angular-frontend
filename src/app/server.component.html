@@ -1,0 +1,64 @@
+<div class="container">
+	<br>
+	<br>
+	<br>
+	<h1>Cadastro de Servidor</h1>
+	<form>
+		<div class="form-group">
+			<label for="name">Nome</label> <input type="text"
+				class="form-control" name="name" [(ngModel)]="server.name"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="ip">IP</label> <input type="text"
+				class="form-control" name="ip" [(ngModel)]="server.ip"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="os">Operating System</label> <input type="text"
+				class="form-control" name="os" [(ngModel)]="server.operatingSystem"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="system">System</label> <input type="text"
+				class="form-control" name="system" [(ngModel)]="server.system"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="subsys">Sub-System</label> <input type="text"
+				class="form-control" name="subsys" [(ngModel)]="server.subSystem"
+				required>
+		</div>
+		<div class="form-group">
+			<label for="cluster">Cluster</label>
+			<select name="cluster" [ngModel]="cluster.name">
+     <option [ngValue]="null" disabled>Escolha seu cluster</option>
+     <option *ngFor="let cluster of clusters" [ngValue]="cluster" requierd>
+         {{ cluster.name }}
+     </option>
+	 	 </select>
+		</div>
+		<button class="btn btn-success" *ngIf="server.id == null" (click)="addServer()">Cadastrar</button>
+		<button class="btn btn-success" *ngIf="server.id != null" (click)="updateServer()">Atualizar</button>
+	</form>
+
+	<p></p>
+	<table class="table">
+		<tr>
+			<th>Nome</th>
+			<th>IP</th>
+			<th>Operating System</th>
+			<th>Sub-System</th>
+			<th>System</th>
+		</tr>
+		<tr *ngFor="let server of servers">
+			<td>{{server.name}} </td>
+			<td>{{server.ip}}</td>
+			<td>{{server.operatingSystem}}</td>
+			<td>{{server.subSystem}}</td>
+			<td>{{server.system}}</td>
+			<button class="btn btn-success" (click)="loadServer()">Carregar</button>
+		</tr>
+	</table>
+
+</div>
